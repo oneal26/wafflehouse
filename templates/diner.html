@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waffle House - On Shift</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body class="diner-page">
+    <!-- Header -->
+    <header class="diner-header">
+        <div class="logo">
+            <span class="waffle">WAFFLE</span>
+            <span class="house">HOUSE</span>
+        </div>
+        <div class="user-info">
+            <span class="username">{{ user.username }}</span>
+            <span class="level">Lv. {{ user.level }}</span>
+            <span class="experience">{{ user.experience }} XP</span>
+            <a href="/logout" class="logout-btn">Sign Out</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar - Stats & Players -->
+        <aside class="sidebar">
+            <div class="stats-panel">
+                <h3>Your Stats</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Cash:</span>
+                    <span class="stat-value cash-display" id="cash-display">${{ "%.2f"|format(user.cash) }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Orders Taken:</span>
+                    <span class="stat-value" id="stat-orders">{{ user.total_orders }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Dishes Cooked:</span>
+                    <span class="stat-value" id="stat-cooked">{{ user.total_dishes_cooked }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Cleanings:</span>
+                    <span class="stat-value" id="stat-cleanings">{{ user.total_cleanings }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Current Streak:</span>
+                    <span class="stat-value" id="stat-streak">{{ user.current_streak }}</span>
+                </div>
+            </div>
+
+            <div class="supplies-panel">
+                <h3>Supplies</h3>
+                <div id="supplies-list" class="supplies-list">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <button id="order-supplies-btn" class="action-btn supply-btn">Order Supplies</button>
+            </div>
+
+            <div class="players-panel">
+                <h3>Active Players (<span id="player-count">0</span>)</h3>
+                <div id="active-players-list"></div>
+            </div>
+
+            <div class="leaderboard-panel">
+                <h3>Top Performers</h3>
+                <ol class="leaderboard">
+                    {% for player in leaderboard %}
+                    <li>
+                        <span class="rank">#{{ loop.index }}</span>
+                        <span class="player-name">{{ player.username }}</span>
+                        <span class="player-xp">{{ player.experience }} XP</span>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </aside>
+
+        <!-- Main Diner Area -->
+        <main class="diner-main">
+            <!-- Surreal Event Overlay -->
+            <div id="event-overlay" class="event-overlay hidden">
+                <div class="event-card">
+                    <div class="event-header">
+                        <h2 id="event-title"></h2>
+                        <span class="event-type" id="event-type"></span>
+                    </div>
+                    <p id="event-description"></p>
+                    <div id="event-effects" class="event-effects"></div>
+                    <div class="event-actions">
+                        <h4>How do you respond?</h4>
+                        <div id="event-resolutions"></div>
+                    </div>
+                    <div class="event-timer">
+                        Time remaining: <span id="event-time-remaining">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supply Ordering Modal -->
+            <div id="supply-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Order Supplies</h2>
+                        <button class="close-modal" id="close-supply-modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="cash-display">Available Cash: $<span id="modal-cash">0.00</span></p>
+                        <div id="supply-order-list" class="supply-order-list">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="activity-feed" id="activity-feed">
+                <div class="feed-item">
+                    <span class="timestamp">Now</span>
+                    <span class="message">Your shift has begun. Get ready for customers!</span>
+                </div>
+            </div>
+
+            <!-- Unified Diner Interface -->
+            <div class="diner-workspace">
+                <!-- Unified Order Queue -->
+                <section class="section orders-section">
+                    <div class="section-header">
+                        <h2>Active Orders</h2>
+                        <p class="section-subtitle">Cook → Deliver → Earn rewards!</p>
+                    </div>
+                    <div id="order-queue" class="order-queue">
+                        <div class="empty-state">No customers yet... waiting for the rush!</div>
+                    </div>
+                </section>
+
+                <!-- Cleaning Tasks -->
+                <section class="section cleaning-section">
+                    <div class="section-header">
+                        <h2>Quick Cleanings</h2>
+                        <p class="section-subtitle">Earn bonus XP (20s cooldown per task)</p>
+                    </div>
+                    <div class="cleaning-tasks">
+                        <button class="action-btn clean-btn" data-task="Wipe" data-location="Counter">
+                            Wipe Counter
+                        </button>
+                        <button class="action-btn clean-btn" data-task="Mop" data-location="Floor">
+                            Mop Floor
+                        </button>
+                        <button class="action-btn clean-btn" data-task="Polish" data-location="Chrome">
+                            Polish Chrome
+                        </button>
+                        <button class="action-btn clean-btn" data-task="Clear" data-location="Table 5">
+                            Clear Table
+                        </button>
+                    </div>
+                    <div id="cleaning-queue" class="cleaning-active"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="ambient-audio" loop>
+        <source src="{{ url_for('static', filename='sounds/ambient.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <!-- Check if Socket.IO loaded -->
+    <script>
+        if (typeof io === 'undefined') {
+            console.error('Socket.IO failed to load from CDN!');
+            alert('Socket.IO library failed to load. Please check your internet connection.');
+        } else {
+            console.log('Socket.IO loaded successfully');
+        }
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/diner.js') }}"></script>
+</body>
+</html>
