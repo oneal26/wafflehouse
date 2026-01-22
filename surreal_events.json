@@ -1,0 +1,351 @@
+{
+  "events": [
+    {
+      "id": "parking_lot_brawl",
+      "title": "Parking Lot Brawl!",
+      "description": "Two customers are having a heated disagreement over the last waffle. The entire diner can hear the commotion!",
+      "type": "dramatic",
+      "duration": 45,
+      "effects": {
+        "distraction": true,
+        "customers_watching": true
+      },
+      "resolution_options": [
+        "Offer them both free waffles",
+        "Call the authorities",
+        "Ignore it (classic Waffle House)"
+      ],
+      "weight": 15
+    },
+    {
+      "id": "alien_first_waffle",
+      "title": "Extraterrestrial Customer",
+      "description": "A being from another world has materialized in booth 7. They're pointing at the menu with a tentacle, clearly fascinated by waffles.",
+      "type": "surreal",
+      "duration": 60,
+      "effects": {
+        "orders_slower": true,
+        "photo_opportunity": true
+      },
+      "resolution_options": [
+        "Serve them the special (scattered, smothered, covered)",
+        "Take a selfie first",
+        "Act like this is completely normal"
+      ],
+      "weight": 8
+    },
+    {
+      "id": "monk_griddle_meditation",
+      "title": "The Griddle Monk",
+      "description": "A wandering monk has assumed the lotus position directly on the griddle. They're warm but unbothered. Profound peace radiates from them.",
+      "type": "mystical",
+      "duration": 90,
+      "effects": {
+        "cooking_blocked": true,
+        "zen_atmosphere": true,
+        "wisdom_available": true
+      },
+      "resolution_options": [
+        "Join them in meditation (gain wisdom bonus)",
+        "Politely ask them to move",
+        "Cook around them"
+      ],
+      "weight": 5
+    },
+    {
+      "id": "celebrity_incognito",
+      "title": "Famous Person Spotted",
+      "description": "Is that...? No way. Someone who looks suspiciously like a major celebrity is eating hash browns in the corner, trying not to be recognized.",
+      "type": "dramatic",
+      "duration": 30,
+      "effects": {
+        "paparazzi_risk": true,
+        "staff_distracted": true
+      },
+      "resolution_options": [
+        "Protect their privacy",
+        "Ask for an autograph",
+        "Post about it (chaos ensues)"
+      ],
+      "weight": 12
+    },
+    {
+      "id": "time_traveler",
+      "title": "Temporal Anomaly Detected",
+      "description": "A confused person in strange clothing insists it's the year 1955. They're asking why the jukebox plays 'modern music' and won't accept credit cards.",
+      "type": "surreal",
+      "duration": 50,
+      "effects": {
+        "timeline_confusion": true,
+        "historical_insights": true
+      },
+      "resolution_options": [
+        "Play along, take their 1955 quarters",
+        "Gently explain the current year",
+        "Ask them for lottery numbers"
+      ],
+      "weight": 7
+    },
+    {
+      "id": "secret_admirer",
+      "title": "Secret Admirer",
+      "description": "Someone has left a heart-shaped waffle and a love note for one of the staff. The entire crew is trying to figure out who sent it.",
+      "type": "wholesome",
+      "duration": 35,
+      "effects": {
+        "morale_boost": true,
+        "romantic_atmosphere": true
+      },
+      "resolution_options": [
+        "Launch an investigation",
+        "Eat the waffle (it's getting cold)",
+        "Frame it on the wall"
+      ],
+      "weight": 18
+    },
+    {
+      "id": "ghost_customer",
+      "title": "The Regular Who Isn't There",
+      "description": "Every staff member swears they just took an order from the regular in booth 3, but when they check, it's empty. The coffee cup is still warm.",
+      "type": "spooky",
+      "duration": 40,
+      "effects": {
+        "eerie_atmosphere": true,
+        "staff_spooked": true
+      },
+      "resolution_options": [
+        "Leave the coffee there (respect)",
+        "Investigate the security footage",
+        "Sage the restaurant"
+      ],
+      "weight": 6
+    },
+    {
+      "id": "food_critic",
+      "title": "Undercover Food Critic",
+      "description": "Word on the street: there's a renowned food critic in the house RIGHT NOW, and they're taking notes. Everyone's on edge.",
+      "type": "dramatic",
+      "duration": 45,
+      "effects": {
+        "pressure_increased": true,
+        "quality_matters": true
+      },
+      "resolution_options": [
+        "Cook your heart out",
+        "Send out the manager",
+        "Just be yourself (it's Waffle House)"
+      ],
+      "weight": 14
+    },
+    {
+      "id": "jukebox_possessed",
+      "title": "The Jukebox Has Opinions",
+      "description": "The jukebox started playing songs that perfectly match everyone's emotions. Nobody touched it. It's making people uncomfortable.",
+      "type": "supernatural",
+      "duration": 55,
+      "effects": {
+        "mood_amplified": true,
+        "customers_unsettled": true
+      },
+      "resolution_options": [
+        "Unplug it (coward's way)",
+        "Request your favorite song mentally",
+        "Dance with it"
+      ],
+      "weight": 9
+    },
+    {
+      "id": "health_inspector",
+      "title": "Health Inspector Surprise Visit",
+      "description": "The health inspector just walked in with a clipboard and a very serious expression. Everything needs to be spotless. NOW.",
+      "type": "stressful",
+      "duration": 60,
+      "effects": {
+        "panic_mode": true,
+        "cleaning_priority": true
+      },
+      "resolution_options": [
+        "All hands on deck cleaning",
+        "Distract them with free food",
+        "Hope for the best"
+      ],
+      "weight": 11
+    },
+    {
+      "id": "prophet_warnings",
+      "title": "The Prophetic Dishwasher",
+      "description": "The usually quiet dishwasher has started speaking in riddles and prophecies. Some of them are... disturbingly accurate.",
+      "type": "mystical",
+      "duration": 70,
+      "effects": {
+        "wisdom_available": true,
+        "future_glimpses": true,
+        "staff_confused": true
+      },
+      "resolution_options": [
+        "Write down everything they say",
+        "Ask about your future",
+        "Offer them some water"
+      ],
+      "weight": 6
+    },
+    {
+      "id": "wedding_proposal",
+      "title": "Waffle House Wedding Proposal",
+      "description": "Someone is about to propose to their partner at table 5. It's actually really sweet. Everyone's trying not to stare.",
+      "type": "wholesome",
+      "duration": 25,
+      "effects": {
+        "romantic_atmosphere": true,
+        "morale_boost": true,
+        "photo_opportunity": true
+      },
+      "resolution_options": [
+        "Bring out a special waffle with candles",
+        "Give them privacy",
+        "Get the whole diner to cheer"
+      ],
+      "weight": 16
+    },
+    {
+      "id": "cryptid_sighting",
+      "title": "Cryptid in the Parking Lot",
+      "description": "Multiple customers are reporting a 'large, hairy creature' in the parking lot. It might be Bigfoot. It might be a really hairy guy in a coat. Who knows?",
+      "type": "surreal",
+      "duration": 40,
+      "effects": {
+        "customers_excited": true,
+        "investigation_needed": true
+      },
+      "resolution_options": [
+        "Bring it hash browns (peace offering)",
+        "Lock the doors",
+        "Get photographic evidence"
+      ],
+      "weight": 8
+    },
+    {
+      "id": "power_outage",
+      "title": "Mysterious Power Outage",
+      "description": "The lights just went out. Emergency lights kicked in. The griddle is still hot though. The show must go on.",
+      "type": "stressful",
+      "duration": 50,
+      "effects": {
+        "visibility_low": true,
+        "ambiance_changed": true,
+        "challenge_mode": true
+      },
+      "resolution_options": [
+        "Light candles (atmospheric)",
+        "Call electrician",
+        "Embrace the darkness"
+      ],
+      "weight": 10
+    },
+    {
+      "id": "philosopher_debate",
+      "title": "Philosophy at 2 AM",
+      "description": "Two customers at the counter have started an intense philosophical debate about the meaning of hash browns. Others are joining in. It's getting deep.",
+      "type": "surreal",
+      "duration": 45,
+      "effects": {
+        "intellectual_atmosphere": true,
+        "existential_questions": true
+      },
+      "resolution_options": [
+        "Join the debate",
+        "Offer coffee refills",
+        "Wonder about your life choices"
+      ],
+      "weight": 13
+    },
+    {
+      "id": "talent_scout",
+      "title": "Talent Scout in the House",
+      "description": "A talent scout claims they're looking for the next big server personality for a reality show. They're watching everyone work.",
+      "type": "dramatic",
+      "duration": 55,
+      "effects": {
+        "performance_anxiety": true,
+        "show_off_mode": true
+      },
+      "resolution_options": [
+        "Give it your best performance",
+        "Stay humble and real",
+        "Sabotage your coworkers (just kidding)"
+      ],
+      "weight": 10
+    },
+    {
+      "id": "lost_child_toy",
+      "title": "The Toy That Won't Leave",
+      "description": "A child left a stuffed animal last week. It keeps appearing in different locations no matter how many times staff put it in lost and found. It's watching.",
+      "type": "spooky",
+      "duration": 30,
+      "effects": {
+        "eerie_atmosphere": true,
+        "staff_spooked": true
+      },
+      "resolution_options": [
+        "Mail it to the child",
+        "Give it a seat and a menu",
+        "Burn it (extreme)"
+      ],
+      "weight": 7
+    },
+    {
+      "id": "flash_mob",
+      "title": "Surprise Flash Mob",
+      "description": "A group of customers suddenly burst into coordinated dance. Did they plan this? Is this a TikTok thing? Should you join?",
+      "type": "wholesome",
+      "duration": 20,
+      "effects": {
+        "energy_boost": true,
+        "viral_potential": true,
+        "morale_boost": true
+      },
+      "resolution_options": [
+        "Join the flash mob",
+        "Record it",
+        "Keep serving hash browns like nothing's happening"
+      ],
+      "weight": 15
+    },
+    {
+      "id": "ancient_artifact",
+      "title": "Archaeological Discovery",
+      "description": "While mopping under booth 2, someone found what appears to be an ancient coin or artifact. It's glowing faintly. This is definitely not normal.",
+      "type": "mystical",
+      "duration": 65,
+      "effects": {
+        "mystery_mode": true,
+        "archaeological_interest": true,
+        "potential_curse": true
+      },
+      "resolution_options": [
+        "Call a museum",
+        "Keep it as a good luck charm",
+        "Put it back (don't anger ancient spirits)"
+      ],
+      "weight": 5
+    },
+    {
+      "id": "storm_refugees",
+      "title": "Storm Refugees",
+      "description": "A massive storm just hit and the Waffle House is suddenly packed with people seeking shelter. You're now a beacon of hope in the darkness. Classic.",
+      "type": "wholesome",
+      "duration": 90,
+      "effects": {
+        "capacity_exceeded": true,
+        "community_hub": true,
+        "morale_boost": true
+      },
+      "resolution_options": [
+        "All hands on deck",
+        "Free coffee for everyone",
+        "This is what Waffle House was made for"
+      ],
+      "weight": 12
+    }
+  ]
+}
